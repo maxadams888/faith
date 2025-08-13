@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faith Homes | Personalized Real Estate Services</title>
+  <meta name="description" content="Faith Homes - Helping you find your dream property with personal care and expert guidance." />
+  <style>
+    :root{
+      --bg:#0b0f14; --text:#0f172a; --ink:#0b1220; --gold:#c5a46d; --accent:#0ea5e9;
+      --muted:#6b7280; --paper:#ffffff; --soft:#f7f7f8;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Apple Color Emoji,Segoe UI Emoji; color:#111827;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1200px;margin-inline:auto;padding-inline:1rem}
+    .btn{display:inline-block;padding:.9rem 1.1rem;border-radius:999px;font-weight:600;border:1px solid #0000;transition:.2s ease;}
+    .btn.primary{background:var(--text);color:white}
+    .btn.primary:hover{transform:translateY(-1px);opacity:.95}
+    .btn.outline{border-color:#e5e7eb}
+    .btn.outline:hover{border-color:#d1d5db}
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eef2f7}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+    .brand{display:flex;align-items:center;gap:.65rem;font-weight:800;letter-spacing:.3px; color:#1f2937;}
+    .brand-badge{width:36px;height:36px;border-radius:50%;background:radial-gradient(60% 60% at 30% 30%, #ffe6e6, #f9d6d6 40%, #d18787 70%, #a25050 100%);border:1px solid #d6b571;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
+    .nav a{color:#1f2937}
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .nav-links a{padding:.5rem .75rem;border-radius:999px}
+    .nav-links a:hover{background:#f3f4f6}
+    .hero{position:relative;isolation:isolate}
+    .hero-media{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.2)),url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center}
+    .hero-inner{padding:10svh 0 18svh;color:white;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;padding:.35rem .6rem;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3)}
+    h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.05;margin:.75rem 0 1rem}
+    .hero p{max-width:56ch;font-size:1.1rem;color:#f3f4f6}
+    .cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.25rem}
+    .trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;opacity:.9}
+    .trust-card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:1rem;text-align:center;font-weight:600;color:#fff;}
+
+    .strip{background:var(--soft);border-top:1px solid #eef2f7;border-bottom:1px solid #eef2f7}
+    .search-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:3rem 0}
+    .search-card{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:1.25rem;box-shadow:0 2px 8px rgba(17,24,39,.04)}
+    .input-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:.75rem}
+    input,select{padding:.85rem .9rem;border:1px solid #e5e7eb;border-radius:10px;font:inherit}
+
+    .section{padding:3.5rem 0}
+    .section h2{font-size:clamp(1.6rem,3.3vw,2.25rem);margin:0 0 .75rem}
+    .section p.lead{color:#4b5563;max-width:70ch}
+
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;margin-top:1.5rem}
+    .card{grid-column:span 4;background:white;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden;box-shadow:0 2px 8px rgba(17,24,39,.05);display:flex;flex-direction:column}
+    .card .media{aspect-ratio:16/10;background:#eef2f7}
+    .card .body{padding:1rem 1rem 1.2rem}
+    .pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.8rem;padding:.25rem .55rem;border-radius:999px;background:#f3f4f6;border:1px solid #e5e7eb;color:#111827}
+    .meta{color:#6b7280;font-size:.9rem}
+
+    .highlight{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+    .highlight .panel{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:1.25rem}
+
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+    .quote{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:1.25rem}
+    .quote p{color:#374151}
+    .quote .by{margin-top:.75rem;color:#6b7280;font-size:.9rem}
+
+    .cta-band{background:#111827;color:white;border-top:1px solid #1f2937}
+
+    footer{background:#0f172a;color:#e5e7eb;border-top:1px solid #0b1220}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;padding:3rem 0}
+    .foot-title{font-weight:700;margin-bottom:.5rem}
+    .legal{border-top:1px solid #111827;padding:1rem 0;color:#9ca3af;font-size:.9rem}
+
+    @media (max-width: 960px){
+      .nav-links{display:none}
+      .search-grid{grid-template-columns:1fr}
+      .cards .card{grid-column:span 6}
+      .highlight{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .cards .card{grid-column:span 12}
+      .footer-grid{grid-template-columns:1fr}
+      .hero-inner{padding:8svh 0 12svh}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="Faith Homes Home">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Faith Homes</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="listings.html">Listings</a>
+        <a href="sell.html">Sell</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About Faith</a>
+        <a href="contact.html" class="btn outline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <span class="eyebrow">Personalized Real Estate Service • Trusted Since 2020</span>
+      <h1>Faith — Your Local Real Estate Expert</h1>
+      <p>Helping you find your dream home or sell your property with integrity, care, and expertise. Whether buying or selling, Faith is here to guide you every step of the way.</p>
+      <div class="cta">
+        <a href="listings.html" class="btn primary">Browse Listings</a>
+        <a href="contact.html" class="btn outline">Request a Consultation</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-card">Trusted local agent</div>
+        <div class="trust-card">Personalized service</div>
+        <div class="trust-card">Market expertise</div>
+        <div class="trust-card">Dedicated support</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" id="search">
+    <div class="container search-grid">
+      <div class="search-card">
+        <h2>Find your perfect home</h2>
+        <p class="lead">Search properties for sale or rent in your preferred location.</p>
+        <form class="input-row" action="listings.html" method="get">
+          <input type="text" name="q" placeholder="City, neighborhood, postcode" aria-label="Location" />
+          <select name="type" aria-label="Property type">
+            <option value="">Any type</option>
+            <option>House</option>
+            <option>Condo</option>
+            <option>Townhouse</option>
+            <option>Apartment</option>
+            <option>Land</option>
+          </select>
+          <select name="status" aria-label="Sale status">
+            <option value="">Any status</option>
+            <option>For Sale</option>
+            <option>For Rent</option>
+            <option>Sold</option>
+          </select>
+          <button class="btn primary" type="submit">Search</button>
+        </form>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1200&auto=format&fit=crop" alt="Beautiful home exterior with garden" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="listings">
+    <h2>Featured Listings</h2>
+    <p class="lead">Handpicked properties currently available. Contact Faith for private viewings or more information.</p>
+    <div class="cards">
+      <article class="card">
+        <img class="media" src="https://images.unsplash.com/photo-1572120360610-d971b9b1f7f7?q=80&w=1200&auto=format&fit=crop" alt="Modern family house" />
+        <div class="body">
+          <div class="pill">For Sale</div>
+          <h3>Charming Family Home</h3>
+          <p class="meta">Austin, TX • $450,000</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="media" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Downtown condo" />
+        <div class="body">
+          <div class="pill">For Sale</div>
+          <h3>Downtown Condo</h3>
+          <p class="meta">Austin, TX • $350,000</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="media" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop" alt="Cozy townhouse" />
+        <div class="body">
+          <div class="pill">For Rent</div>
+          <h3>Cozy Townhouse</h3>
+          <p class="meta">Austin, TX • $1,600/mo</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section strip" id="sell">
+    <div class="container highlight">
+      <div class="panel">
+        <h2>Thinking of selling your home?</h2>
+        <p class="lead">Faith offers expert advice on pricing, staging, and marketing to get your property sold quickly and for the best price.</p>
+        <ul>
+          <li>Personalized marketing plans</li>
+          <li>Professional photography & virtual tours</li>
+          <li>Local market knowledge</li>
+          <li>Dedicated client support</li>
+        </ul>
+        <div class="cta">
+          <a class="btn primary" href="contact.html">Request a Valuation</a>
+          <a class="btn outline" href="services.html">Learn About Services</a>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c94?q=80&w=1400&auto=format&fit=crop" alt="Real estate agent discussing with client" />
+    </div>
+  </section>
+
+  <section class="section container" id="services">
+    <h2>Services Offered</h2>
+    <div class="cards">
+      <article class="card">
+        <img class="media" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop" alt="Home staging" />
+        <div class="body">
+          <h3>Home Staging</h3>
+          <p class="meta">Enhance your property's appeal to attract more buyers.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="media" src="https://images.unsplash.com/photo-1560185127-4a138407f360?q=80&w=1200&auto=format&fit=crop" alt="Market analysis" />
+        <div class="body">
+          <h3>Market Analysis</h3>
+          <p class="meta">Data-driven insights to price your property competitively.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="media" src="https://images.unsplash.com/photo-1486308510493-cb5008e8f5d2?q=80&w=1200&auto=format&fit=crop" alt="Virtual tours" />
+        <div class="body">
+          <h3>Virtual Tours</h3>
+          <p class="meta">Showcase your property online to reach more buyers.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section strip" id="about">
+    <div class="container">
+      <h2>About Faith</h2>
+      <div class="testimonials">
+        <div class="quote">
+          <p>“Faith is professional, approachable, and always puts her clients first. Her dedication helped us find our perfect home!”</p>
+          <div class="by">Client - Austin, TX</div>
+        </div>
+        <div class="quote">
+          <p>“Her knowledge of the local market and personalized approach made selling our house a breeze.”</p>
+          <div class="by">Seller - Austin, TX</div>
+        </div>
+        <div class="quote">
+          <p>“Working with Faith was a fantastic experience. I highly recommend her to anyone looking to buy or sell.”</p>
+          <div class="by">Buyer - Austin, TX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:2rem 0;">
+      <h2 style="margin:0;color:white;">Ready to find your dream home?</h2>
+      <a href="contact.html" class="btn primary">Contact Faith Today</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="color:#e5e7eb"><span class="brand-badge"></span><span>Faith Homes</span></div>
+        <p class="meta" style="color:#9ca3af;max-width:50ch;margin-top:.5rem">Helping you buy or sell with personalized care and local expertise. Based in Austin, TX.</p>
+      </div>
+      <div>
+        <div class="foot-title">Company</div>
+        <a href="about.html">About Faith</a><br />
+        <a href="services.html
